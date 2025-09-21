@@ -12,7 +12,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"build:registry": "pnpm shadcn-svelte registry build"
+		"build:registry": "pnpm shadcn-svelte registry build --output ./docs/static/r"
 	},
 	"workspaces": [
 		"docs"

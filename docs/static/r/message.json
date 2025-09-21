@@ -1,0 +1,37 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "message",
+	"type": "registry:ui",
+	"dependencies": [
+		"ai@^5.0.48",
+		"zod@^4.1.11"
+	],
+	"devDependencies": [
+		"tailwind-variants@^1.0.0"
+	],
+	"registryDependencies": [
+		"avatar"
+	],
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n    import type { UIMessage } from \"ai\";\n\n\ttype MessageProps = HTMLAttributes<HTMLDivElement> & {\n\t\tfrom: UIMessage[\"role\"];\n\t};\n\n\tlet {\n\t\tclass: className = \"\",\n\t\tfrom = \"assistant\",\n        children,\n\t\t...props\n\t}: MessageProps = $props();\n</script>\n\n<div\n\tclass={cn(\n\t\t\"group flex w-full items-end justify-end gap-2 py-4\",\n\t\tfrom === \"user\" ? \"is-user\" : \"is-assistant flex-row-reverse justify-end\",\n\t\tclassName\n\t)}\n\t{...props}\n>\n    {@render children?.()}\n</div>",
+			"type": "registry:file",
+			"target": "message/message.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\" module>\n\timport { cn,type WithElementRef } from \"$UTILS$\";\n    import type { HTMLAttributes } from \"svelte/elements\";\n    import { type VariantProps, tv } from \"tailwind-variants\";\n\n    export const messageContentVariants = tv({\n\t\tbase: \"is-user:dark flex flex-col gap-2 overflow-hidden rounded-lg text-sm\",\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tcontained: [\n\t\t\t\t\t\"max-w-[80%] px-4 py-3\",\n\t\t\t\t\t\"group-[.is-user]:bg-primary group-[.is-user]:text-primary-foreground\",\n\t\t\t\t\t\"group-[.is-assistant]:bg-secondary group-[.is-assistant]:text-foreground\",\n\t\t\t\t],\n\t\t\t\tflat: [\n\t\t\t\t\t\"group-[.is-user]:max-w-[80%] group-[.is-user]:bg-secondary group-[.is-user]:px-4 group-[.is-user]:py-3 group-[.is-user]:text-foreground\",\n\t\t\t\t\t\"group-[.is-assistant]:text-foreground\",\n\t\t\t\t],\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"contained\",\n\t\t},\n\t});\n\n\texport type MessageContentVariant = VariantProps<\n\t\ttypeof messageContentVariants\n\t>[\"variant\"];\n\n\texport type MessageContentProps = WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n\t\tvariant?: MessageContentVariant;\n\t};\n</script>\n\n\n<script lang=\"ts\">\n\tlet {\n\t\tclass: className,\n\t\tvariant = \"contained\",\n\t\tref = $bindable(null),\n\t\tchildren,\n\t\t...restProps\n\t}: MessageContentProps = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\tclass={cn(messageContentVariants({ variant }), className)}\n\t{...restProps}\n>\n\t{@render children?.()}\n</div>",
+			"type": "registry:file",
+			"target": "message/message-content.svelte"
+		},
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn } from \"$UTILS$\";\n\timport { Avatar, AvatarFallback, AvatarImage } from \"../avatar\";\n\n\tlet {\n\t\tclass: className = \"\",\n\t\tsrc = \"\",\n\t\tname = \"\",\n\t\t...props\n\t}: { class?: string; src?: string; name?: string } = $props();\n</script>\n\n<Avatar class={cn(\"ring-border size-8 ring-1\", className)} {...props}>\n\t<AvatarImage alt=\"\" class=\"mt-0 mb-0\" {src} />\n\t<AvatarFallback>{name?.slice(0, 2) || \"ME\"}</AvatarFallback>\n</Avatar>\n",
+			"type": "registry:file",
+			"target": "message/message-avatar.svelte"
+		},
+		{
+			"content": "import Message from \"./message.svelte\";\nimport MessageContent from \"./message-content.svelte\";\nimport MessageAvatar from \"./message-avatar.svelte\";\n\nexport { Message, MessageContent, MessageAvatar, Message as Root, MessageContent as Content, MessageAvatar as Avatar };\n",
+			"type": "registry:file",
+			"target": "message/index.ts"
+		}
+	]
+}
