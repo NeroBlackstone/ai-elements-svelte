@@ -10,7 +10,9 @@ const config = {
 		alias: {
 			"$content/*": ".velite/*",
 		},
-		adapter: adapter(),
+		adapter: adapter({
+			strict: false
+		}),
 	},
 	extensions: [".svelte", ".md"],
 };
