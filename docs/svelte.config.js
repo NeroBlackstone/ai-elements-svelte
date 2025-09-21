@@ -22,7 +22,12 @@ const config = {
 				'/',
 				'/docs',
 				'/docs/*'
-			]
+			].map(entry => {
+				if (!process.argv.includes('dev') && process.env.BASE_PATH) {
+					return process.env.BASE_PATH + entry;
+				}
+				return entry;
+			})
 		},
 	extensions: [".svelte", ".md"],
 };
