@@ -1,22 +1,123 @@
-# registry-template
+# AI Elements Svelte
 
-You can use the `shadcn-svelte` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any Svelte project.
+[AI Elements Svelte](https://ai-elements-svelte.com) is an unofficial community-led [Svelte](https://svelte.dev/) port of [AI Elements](https://github.com/vercel/ai-elements).
 
-## Getting Started
+> **Note** <br> **We are not affiliated with AI Elements, but the project has the author’s encouragement and support.** <br> This is a project born out of the need for a similar project for the Svelte ecosystem.
 
-This is a template for creating a custom registry using SvelteKit.
+## Overview
 
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn-svelte build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- Every registry item is compatible with the `shadcn-svelte` CLI.
-- The `card`, `button`, `input`, `label`, `textarea` components here would come from the `shadcn-svelte` registry, but the `stepper` component is a custom `ui` component you can use as a reference for creating and referencing "local" `ui` components.
+[AI Elements Svelte](https://ai-elements-svelte.com) is a component library built on top of [shadcn-svelte](https://shadcn-svelte.com/) to help you build AI-native applications faster. It provides pre-built, customizable Svelte components specifically designed for AI applications, including conversations, messages, code blocks, reasoning displays, and more. The CLI makes it easy to add these components to your Svelte or SvelteKit project.
 
-> [!IMPORTANT]
-> Don't forget to replace the version of `shadcn-svelte` in the `package.json` file with the version you want to use.
+## Installation
 
-## Documentation
+You can use the AI Elements Svelte CLI directly with npx, or install it globally:
 
-Visit the [shadcn-svelte documentation](https://shadcn-svelte.com/docs/registry) to view the full documentation.
+```bash
+# Using shadcn-svelte cli
+npx shadcn-svelte@latest add https://registry.ai-elements-svelte.com/all.json
+```
+
+## Prerequisites
+
+Before using AI Elements Svelte, ensure your project meets these requirements:
+
+- **Node.js** 18 or later
+- **Svelte, SvelteKit** project with [AI SDK](https://ai-sdk.dev/) installed
+- **shadcn-svelte** initialized in your project (`npx shadcn-svelte@latest init`)
+- **Tailwind CSS** configured (AI Elements Svelte supports CSS Variables mode only)
+
+## Usage
+
+### Install All Components
+
+Install all available AI Elements Svelte components at once:
+
+```bash
+npx ai-elements-svelte@latest
+```
+
+This command will:
+
+- Set up shadcn-svelte if not already configured
+- Install all AI Elements Svelte components to your configured components directory
+- Add necessary dependencies to your project
+
+### Install Specific Components
+
+Install individual components using the `add` command:
+
+```bash
+npx ai-elements-svelte@latest add <component-name>
+```
+
+Examples:
+
+```bash
+# Install the message component
+npx ai-elements-svelte@latest add message
+
+# Install the conversation component
+npx ai-elements-svelte@latest add conversation
+
+# Install the code-block component
+npx ai-elements-svelte@latest add code-block
+```
+
+### Alternative: Use with shadcn-svelte CLI
+
+You can also install components using the standard shadcn-svelte CLI:
+
+```bash
+# Install all components
+npx shadcn-svelte@latest add https://registry.ai-elements-svelte.com/all.json
+
+# Install a specific component
+npx shadcn-svelte@latest add https://registry.ai-elements-svelte.com/message.json
+```
+
+## Available Components
+
+AI Elements Svelte includes the following components:
+
+| Component         | Status | Description                                             |
+| ----------------- | ------ | ------------------------------------------------------- |
+| `message`         | ✅     | Individual chat messages with avatars                   |
+| `conversation`    | ❌     | Container for chat conversations                        |
+| `response`        | ❌     | Formatted AI response display                           |
+| `prompt-input`    | ❌     | Advanced input component with model selection           |
+| `actions`         | ❌     | Interactive action buttons for AI responses             |
+| `branch`          | ❌     | Branch visualization for conversation flows             |
+| `code-block`      | ❌     | Syntax-highlighted code display with copy functionality |
+| `image`           | ❌     | AI-generated image display component                    |
+| `inline-citation` | ❌     | Inline source citations                                 |
+| `loader`          | ❌     | Loading states for AI operations                        |
+| `reasoning`       | ❌     | Display AI reasoning and thought processes              |
+| `source`          | ❌     | Source attribution component                            |
+| `suggestion`      | ❌     | Quick action suggestions                                |
+| `task`            | ❌     | Task completion tracking                                |
+| `tool`            | ❌     | Tool usage visualization                                |
+
+## Configuration
+
+AI Elements Svelte uses your existing shadcn-svelte configuration. Components will be installed to the directory specified in your `components.json` file.
+
+## Recommended Setup
+
+For the best experience, we recommend:
+
+1. **AI Gateway**: Set up [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) and add `AI_GATEWAY_API_KEY` to your `.env.local`
+2. **CSS Variables**: Use shadcn-svelte's CSS Variables mode for theming
+3. **TypeScript**: Enable TypeScript for better development experience
+
+## Contributing
+
+If you'd like to contribute to AI Elements Svelte, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch
+3. Make your changes to the components in `packages/elements`.
+4. Open a PR to the `main` branch.
+
+---
+
+Made with ❤️ by [cwandev](https://github.com/cwandev)
