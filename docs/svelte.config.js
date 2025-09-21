@@ -13,6 +13,9 @@ const config = {
 		adapter: adapter({
 			strict: false
 		}),
+		paths: {
+			base: process.env.BASE_PATH || ''
+		}
 	},
 	extensions: [".svelte", ".md"],
 };

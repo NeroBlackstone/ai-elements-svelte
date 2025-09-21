@@ -50,6 +50,8 @@ jobs:
           cd docs
           pnpm install
           pnpm build
+        env:
+          BASE_PATH: /ai-elements-svelte
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
