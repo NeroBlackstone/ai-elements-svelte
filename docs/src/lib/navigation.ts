@@ -3,6 +3,7 @@ import ChalkboardTeacher from "phosphor-svelte/lib/ChalkboardTeacher";
 import RocketLaunch from "phosphor-svelte/lib/RocketLaunch";
 import Tag from "phosphor-svelte/lib/Tag";
 import { getAllDocs } from "./utils.js";
+import { env } from '$env/dynamic/public';
 
 const allDocs = getAllDocs();
 
@@ -10,26 +11,26 @@ const components = allDocs
 	.filter((doc) => doc.section === "Components")
 	.map((doc) => ({
 		title: doc.title,
-		href: `/docs/${doc.slug}`,
+		href: env.PUBLIC_BASE_PATH+`/docs/${doc.slug}`,
 	}));
 
 const configuration = allDocs
 	.filter((doc) => doc.section === "Configuration")
 	.map((doc) => ({
 		title: doc.title,
-		href: `/docs/${doc.slug}`,
+		href: env.PUBLIC_BASE_PATH+`/docs/${doc.slug}`,
 	}));
 
 export const navigation = defineNavigation({
 	anchors: [
 		{
 			title: "Introduction",
-			href: "/docs",
+			href: env.PUBLIC_BASE_PATH+"/docs",
 			icon: ChalkboardTeacher,
 		},
 		{
 			title: "Getting Started",
-			href: "/docs/getting-started",
+			href: env.PUBLIC_BASE_PATH+"/docs/getting-started",
 			icon: RocketLaunch,
 		},
 		{

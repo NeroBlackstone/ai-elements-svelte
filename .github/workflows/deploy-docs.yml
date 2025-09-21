@@ -47,7 +47,7 @@ jobs:
 
       - name: Build docs
         env:
-          BASE_PATH: "/${{ github.event.repository.name }}"
+          PUBLIC_BASE_PATH: "/${{ github.event.repository.name }}"
         run: |
           cd docs
           pnpm install

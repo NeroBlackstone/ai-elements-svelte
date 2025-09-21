@@ -6,11 +6,12 @@ import { cleanMarkdown, defineSearchContent } from "@svecodocs/kit/search";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
+const basePath = process.env.PUBLIC_BASE_PATH ?? "";
 export function buildDocsSearchIndex() {
 	return defineSearchContent(
 		docs.map((doc) => ({
 			title: doc.title,
-			href: `/docs/${doc.slug}`,
+			href: basePath+`/docs/${doc.slug}`,
 			description: doc.description,
 			content: cleanMarkdown(doc.raw),
 		}))
