@@ -10,20 +10,10 @@ const config = {
 		alias: {
 			"$content/*": ".velite/*",
 		},
-		adapter: adapter({
-			strict: false,
-			fallback: '404.html'
-		}),
+		adapter: adapter(),
 		paths: {
 			base: process.env.BASE_PATH || ''
 		},
-		prerender: {
-			entries: [
-				'/',
-				'/docs',
-				'/docs/*'
-			]
-		}
 	},
 	extensions: [".svelte", ".md"],
 };
