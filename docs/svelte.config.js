@@ -20,7 +20,7 @@ const config = {
 		prerender: {
 			entries: [
 				'/',
-				'/docs',
+    			`${process.env.BASE_PATH || ''}/docs`,			
 			]
 		},
 	},
