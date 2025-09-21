@@ -10,9 +10,11 @@ const config = {
 		alias: {
 			"$content/*": ".velite/*",
 		},
-		adapter: adapter(),
+		adapter: adapter({
+			fallback: '404.html'
+		}),
 		paths: {
-			base: process.env.BASE_PATH || ''
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		},
 	},
 	extensions: [".svelte", ".md"],
