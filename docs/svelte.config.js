@@ -16,8 +16,7 @@ const config = {
 		paths: {
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		},
-	},
-	prerender: {
+		prerender: {
 			entries: [
 				'/',
 				'/docs',
@@ -29,6 +28,8 @@ const config = {
 				return entry;
 			})
 		},
+	},
+
 	extensions: [".svelte", ".md"],
 };
 
