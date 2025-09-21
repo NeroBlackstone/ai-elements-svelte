@@ -11,6 +11,7 @@ const config = {
 			"$content/*": ".velite/*",
 		},
 		adapter: adapter({
+			strict: false,
 			fallback: '404.html'
 		}),
 		paths: {
@@ -20,7 +21,6 @@ const config = {
 			entries: [
 				'/',
 				'/docs',
-				'/docs/*'
 			]
 		},
 	},
