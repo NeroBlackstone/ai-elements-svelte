@@ -120,4 +120,4 @@ If you'd like to contribute to AI Elements Svelte, please follow these steps:
 
 ---
 
-Made with ❤️ by [cwandev](https://github.com/cwandev)
+Made with ❤️ by [NeroBlackstone](https://github.com/NeroBlackstone)

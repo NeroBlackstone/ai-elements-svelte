@@ -1,6 +1,4 @@
 <script lang="ts">
-	import SvecosystemDark from "$lib/components/logos/svecosystem-dark.svelte";
-	import SvecosystemLight from "$lib/components/logos/svecosystem-light.svelte";
 	import { DocsLayout } from "@svecodocs/kit";
 	import { navigation } from "$lib/navigation";
 
@@ -9,8 +7,7 @@
 
 <DocsLayout {navigation}>
 	{#snippet logo()}
-		<SvecosystemDark class="hidden max-h-6 dark:block" />
-		<SvecosystemLight class="block max-h-6 dark:hidden" />
+		{"AI Elements Svelte"}
 		<span class="sr-only">Svecodocs</span>
 	{/snippet}
 

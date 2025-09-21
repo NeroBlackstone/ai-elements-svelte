@@ -16,7 +16,6 @@ export const siteConfig = defineSiteConfig({
 		url: "https://github.com/svecosystem/svecodocs/blob/main/LICENSE",
 	},
 	links: {
-		x: "https://x.com/huntabyte",
 		github: "https://github.com/svecosystem/svecodocs",
 	},
 });
