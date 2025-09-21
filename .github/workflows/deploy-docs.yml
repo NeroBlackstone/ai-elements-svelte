@@ -53,6 +53,10 @@ jobs:
         env:
           BASE_PATH: /ai-elements-svelte
 
+      - name: Add .nojekyll file
+        run: |
+          touch docs/build/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

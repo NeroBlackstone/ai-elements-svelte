@@ -11,10 +11,18 @@ const config = {
 			"$content/*": ".velite/*",
 		},
 		adapter: adapter({
-			strict: false
+			strict: false,
+			fallback: '404.html'
 		}),
 		paths: {
 			base: process.env.BASE_PATH || ''
+		},
+		prerender: {
+			entries: [
+				'/',
+				'/docs',
+				'/docs/*'
+			]
 		}
 	},
 	extensions: [".svelte", ".md"],
