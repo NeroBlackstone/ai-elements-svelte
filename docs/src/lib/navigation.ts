@@ -6,31 +6,32 @@ import { getAllDocs } from "./utils.js";
 import { env } from '$env/dynamic/public';
 
 const allDocs = getAllDocs();
+const basePath = env.PUBLIC_BASE_PATH ?? '';
 
 const components = allDocs
 	.filter((doc) => doc.section === "Components")
 	.map((doc) => ({
 		title: doc.title,
-		href: env.PUBLIC_BASE_PATH+`/docs/${doc.slug}`,
+		href: basePath +`/docs/${doc.slug}`,
 	}));
 
 const configuration = allDocs
 	.filter((doc) => doc.section === "Configuration")
 	.map((doc) => ({
 		title: doc.title,
-		href: env.PUBLIC_BASE_PATH+`/docs/${doc.slug}`,
+		href: basePath +`/docs/${doc.slug}`,
 	}));
 
 export const navigation = defineNavigation({
 	anchors: [
 		{
 			title: "Introduction",
-			href: env.PUBLIC_BASE_PATH+"/docs",
+			href: basePath +"/docs",
 			icon: ChalkboardTeacher,
 		},
 		{
 			title: "Getting Started",
-			href: env.PUBLIC_BASE_PATH+"/docs/getting-started",
+			href: basePath +"/docs/getting-started",
 			icon: RocketLaunch,
 		},
 		{

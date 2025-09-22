@@ -16,17 +16,17 @@ const config = {
 		paths: {
 			base: process.env.PUBLIC_BASE_PATH??'',
 		},
-		prerender: {
-			handleHttpError: ({ path, message }) => {
-				// 忽略 /docs 路径的错误，这是预期的行为
-				if (path === "/docs") {
-					return;
-				}
+		// prerender: {
+		// 	handleHttpError: ({ path, message }) => {
+		// 		// 忽略 /docs 路径的错误，这是预期的行为
+		// 		if (path === "/docs") {
+		// 			return;
+		// 		}
 				
-				// 对于其他路径，抛出错误
-				throw new Error(message);
-			}
-		}
+		// 		// 对于其他路径，抛出错误
+		// 		throw new Error(message);
+		// 	}
+		// }
 	},
 
 	extensions: [".svelte", ".md"],
